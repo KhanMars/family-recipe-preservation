@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pollo en crema de chipotle</title>
+  <style>
+    body {
+      background: #f6f1e7;
+      color: #3d2914;
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fffaf3;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 24px;
+      border: 1px solid #e4d3bc;
+    }
+    label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #e4d3bc;
+  background: #fffdf8;
+  color: #3d2914;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid #c4a574;
+  background: #f3e6d4;
+  color: #3d2914;
+  font-family: Georgia, serif;
+  cursor: pointer;
+}
+
+.input-card {
+  margin-bottom: 24px;
+}
+    h1, h2 {
+      margin-bottom: 8px;
+    }
+
+    .from, .hint {
+      color: #7a6248;
+    }
+
+    .original {
+  background-color: #fffdf8;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    #e7d7c3 28px
+  );
+  color: #2c3f6b;
+  font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  font-size: 1.15rem;
+  line-height: 28px;
+  padding: 8px 16px 12px 18px;
+  border-left: 3px solid #e7b7b7;
+  box-shadow: 2px 3px 0 #eadfce;
+  transform: rotate(-0.4deg);
+white-space: pre-wrap;
+}
+
+    section {
+      margin-top: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <section class="card input-card">
+  <h2>Escribe la receta</h2>
+  <label for="recipe-input">Nota Original</label>
+  <textarea
+    id="recipe-input"
+    rows="6"
+    placeholder="Pega o escribe la nota aquí..."
+  ></textarea>
+  <button type="button" id="show-note">Poner en la nota</button>
+<p class="original" id="original-note">
+</section>
+  <main class="card">
+    <p class="hint">Receta familiar</p>
+    <h1>Pollo en crema de chipotle</h1>
+    <p class="from">De: Familia Sánchez</p>
+
+    <section>
+      <h2>Nota original</h2>
+      <p class="hint">Guardada tal cual, sin corregir.</p>
+      <p class="original">
+        Pollo en crema de chipotle. Usar milanesas de pechuga,
+        cocinarlas en sartén, desglasear con un shot de brandy.
+        Licuar media creama con chipotle al gusto e integrar la
+        salsa con el pollo por 5 min. Recomendado con arroz blanco.
+      </p>
+    </section>
+
+    <section>
+      <h2>Pasos claros</h2>
+      <ol>
+        <li>Cocina las milanesas de pechuga en una sartén hasta que estén doradas y cocidas.</li>
+        <li>Desglasea la sartén con un shot de brandy. Cuidado: el alcohol puede encenderse. Si pasa, retira la sartén del fuego.</li>
+        <li>Licúa media crema con chipotle al gusto.</li>
+        <li>Integra esa salsa con el pollo y cocina unos 5 minutos.</li>
+        <li>Sirve con arroz blanco.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Ideas para adaptar</h2>
+      <p class="hint">Sugerencias de cocina, no consejo médico.</p>
+      <ul>
+        <li>Sin alcohol: desglasea con caldo de pollo en lugar de brandy.</li>
+        <li>Sin lactosa: usa media crema sin lactosa. La crema de coco también sirve, pero cambia el sabor.</li>
+        <li>Menos picante: usa menos chipotle.</li>
+      </ul>
+    </section>
+  </main>
+<script>
+  const input = document.getElementById("recipe-input");
+  const note = document.getElementById("original-note");
+  const button = document.getElementById("show-note");
+
+  button.addEventListener("click", function () {
+    const text = input.value;
+
+    if (text.trim() === "") {
+      return;
+    }
+
+    note.textContent = text;
+  });
+</script>
+</body>
+</html>
