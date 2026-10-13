@@ -2,151 +2,126 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Pollo en crema de chipotle</title>
-  <style>
-    body {
-      background: #f6f1e7;
-      color: #3d2914;
-      font-family: Georgia, serif;
-      margin: 0;
-      padding: 24px;
-    }
-
-    .card {
-      background: #fffaf3;
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 24px;
-      border: 1px solid #e4d3bc;
-    }
-    label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px;
-  border: 1px solid #e4d3bc;
-  background: #fffdf8;
-  color: #3d2914;
-  font-family: Georgia, serif;
-  font-size: 1rem;
-}
-
-button {
-  margin-top: 12px;
-  padding: 8px 14px;
-  border: 1px solid #c4a574;
-  background: #f3e6d4;
-  color: #3d2914;
-  font-family: Georgia, serif;
-  cursor: pointer;
-}
-
-.input-card {
-  margin-bottom: 24px;
-}
-    h1, h2 {
-      margin-bottom: 8px;
-    }
-
-    .from, .hint {
-      color: #7a6248;
-    }
-
-    .original {
-  background-color: #fffdf8;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 27px,
-    #e7d7c3 28px
-  );
-  color: #2c3f6b;
-  font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
-  font-size: 1.15rem;
-  line-height: 28px;
-  padding: 8px 16px 12px 18px;
-  border-left: 3px solid #e7b7b7;
-  box-shadow: 2px 3px 0 #eadfce;
-  transform: rotate(-0.4deg);
-white-space: pre-wrap;
-}
-
-    section {
-      margin-top: 24px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetas Familiares</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <section class="card input-card">
-  <h2>Escribe la receta</h2>
-  <label for="recipe-input">Nota Original</label>
-  <textarea
-    id="recipe-input"
-    rows="6"
-    placeholder="Pega o escribe la nota aquí..."
-  ></textarea>
-  <button type="button" id="show-note">Poner en la nota</button>
-<p class="original" id="original-note">
-</section>
-  <main class="card">
-    <p class="hint">Receta familiar</p>
-    <h1>Pollo en crema de chipotle</h1>
-    <p class="from">De: Familia Sánchez</p>
+  <header>
+    <h1>Recetas Familiares</h1>
+    <p>Preservando las recetas de nuestra familia</p>
+    <button id="btnAgregar">+ Añadir receta</button>
+    <button id="btnImportar">Importar recetas (JSON)</button>
+  </header>
 
-    <section>
-      <h2>Nota original</h2>
-      <p class="hint">Guardada tal cual, sin corregir.</p>
-      <p class="original">
-        Pollo en crema de chipotle. Usar milanesas de pechuga,
-        cocinarlas en sartén, desglasear con un shot de brandy.
-        Licuar media creama con chipotle al gusto e integrar la
-        salsa con el pollo por 5 min. Recomendado con arroz blanco.
-      </p>
+  <main>
+    <!-- Búsqueda y filtros -->
+    <section class="filtros">
+      <input type="text" id="busqueda" placeholder="Buscar receta...">
+      
+      <select id="filtroCategoria">
+        <option value="">Todas las categorías</option>
+        <option value="Plato principal">Plato principal</option>
+        <option value="Postre">Postre</option>
+        <option value="Bebida">Bebida</option>
+        <option value="Bebida">Salsa</option>
+        <option value="Bebida">Aperitivo</option>
+        <option value="Bebida">Conserva</option>
+      </select>
     </section>
 
-    <section>
-      <h2>Pasos claros</h2>
-      <ol>
-        <li>Cocina las milanesas de pechuga en una sartén hasta que estén doradas y cocidas.</li>
-        <li>Desglasea la sartén con un shot de brandy. Cuidado: el alcohol puede encenderse. Si pasa, retira la sartén del fuego.</li>
-        <li>Licúa media crema con chipotle al gusto.</li>
-        <li>Integra esa salsa con el pollo y cocina unos 5 minutos.</li>
-        <li>Sirve con arroz blanco.</li>
-      </ol>
-    </section>
+    <!-- Listado de recetas -->
+   <section class="recetas">
+      
+      
 
-    <section>
-      <h2>Ideas para adaptar</h2>
-      <p class="hint">Sugerencias de cocina, no consejo médico.</p>
-      <ul>
-        <li>Sin alcohol: desglasea con caldo de pollo en lugar de brandy.</li>
-        <li>Sin lactosa: usa media crema sin lactosa. La crema de coco también sirve, pero cambia el sabor.</li>
-        <li>Menos picante: usa menos chipotle.</li>
-      </ul>
-    </section>
+  </section>
   </main>
-<script>
-  const input = document.getElementById("recipe-input");
-  const note = document.getElementById("original-note");
-  const button = document.getElementById("show-note");
 
-  button.addEventListener("click", function () {
-    const text = input.value;
+  <!-- MODAL DETALLE RECETA -->
+<div id="modal" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar">&times;</span>
+    
+    <h2 id="modal-titulo"></h2>
+    
+    <p><strong>Autor:</strong> <span id="modal-autor"></span></p>
+    <p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
+    <p><strong>Tiempo:</strong> <span id="modal-tiempo"></span> min | <strong>Porciones:</strong> <span id="modal-porciones"></span></p>
+    <p><strong>Dificultad:</strong> <span id="modal-dificultad"></span></p>
 
-    if (text.trim() === "") {
-      return;
-    }
+    <h4>Ingredientes:</h4>
+    <ul id="modal-ingredientes"></ul>
 
-    note.textContent = text;
-  });
-</script>
+    <h4>Instrucciones:</h4>
+    <p id="modal-instrucciones"></p>
+
+    <h4>Etiquetas:</h4>
+    <div id="modal-etiquetas" class="etiquetas"></div>
+
+    <button id="btnEliminarReceta" style="background-color: #c0392b; margin-top: 15px;">Eliminar esta receta</button>
+    </button>
+
+<button id="btnCerrarModal">Cerrar</button>
+  </div>
+</div>
+
+  <!-- MODAL FORMULARIO AÑADIR RECETA -->
+<div id="modalFormulario" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" id="cerrarFormulario">&times;</span>
+    <h2>Añadir nueva receta</h2>
+
+    <form id="formReceta">
+      <input type="text" id="titulo" placeholder="Título de la receta" required>
+      <input type="text" id="autor" placeholder="Autor / Familia" required>
+
+      <div style="display: flex; gap: 10px;">
+        <input type="number" id="tiempo" placeholder="Tiempo (min)" required style="flex:1;">
+        <input type="number" id="porciones" placeholder="Porciones" required style="flex:1;">
+      </div>
+
+      <select id="dificultad" required>
+        <option value="">Dificultad</option>
+        <option value="Fácil">Fácil</option>
+        <option value="Media">Media</option>
+        <option value="Difícil">Difícil</option>
+      </select>
+
+      <select id="categoria" required>
+        <option value="">Categoría</option>
+        <option value="Plato principal">Plato principal</option>
+        <option value="Postre">Postre</option>
+        <option value="Bebida">Bebida</option>
+        <option value="Bebida">Salsa</option>
+        <option value="Bebida">Aperitivo</option>
+        <option value="Bebida">Conserva</option>
+      </select>
+
+      <!-- Ingredientes dinámicos -->
+      <h4>Ingredientes</h4>
+      <div id="listaIngredientes"></div>
+      <button type="button" id="btnAgregarIngrediente">+ Añadir ingrediente</button>
+      
+      <div><textarea id="instrucciones" placeholder="Instrucciones de preparación..." rows="5" required></textarea></div>
+      <input type="text" id="etiquetas" placeholder="Etiquetas (separadas por coma)">
+
+      <button type="submit">Guardar receta</button>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL IMPORTAR RECETAS (TEMPORAL) -->
+<div id="modalImportar" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" id="cerrarImportar">&times;</span>
+    <h2>Importar recetas (formato JSON)</h2>
+    <p>Pega aquí un arreglo de recetas en formato JSON:</p>
+    <textarea id="jsonRecetas" rows="12" style="width: 100%; font-family: monospace;"></textarea>
+    <button id="btnCargarJSON">Cargar recetas</button>
+  </div>
+</div>
+
+  <script src="app.js"></script>
 </body>
 </html>

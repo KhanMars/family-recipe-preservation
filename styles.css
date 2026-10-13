@@ -1,0 +1,145 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f9f5f0;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  color: #5c4033;
+}
+
+button {
+  background-color: #8b5e3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #6b452c;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+input, select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.recetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.receta-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.receta-card h3 {
+  margin-top: 0;
+  color: #5c4033;
+}
+
+.etiquetas span {
+  background-color: #e8d5c4;
+  color: #5c4033;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin-right: 5px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.receta-card p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.etiquetas {
+  margin-top: 12px;
+}
+
+/* Estilos del Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-contenido {
+  background-color: white;
+  margin: 10% auto;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.cerrar:hover {
+  color: red;
+}
+
+/* Ajuste del modal para que tenga scroll cuando crezca */
+.modal-contenido {
+  max-height: 85vh;           /* No puede ocupar más del 85% de la pantalla */
+  overflow-y: auto;           /* Activa el scroll vertical cuando sea necesario */
+  box-sizing: border-box;
+}
+
+/* Mejor espaciado interno cuando hay mucho contenido */
+#modalFormulario .modal-contenido {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#formReceta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.receta-card:hover {
+  border-color: #8b5e3c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
